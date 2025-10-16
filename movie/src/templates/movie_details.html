@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ movie.Title }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
-<body class="bg-pink-50 min-h-screen">
-    <div class="container mx-auto px-4 py-8">
-        <a href="/movies" class="inline-flex items-center text-pink-600 hover:text-pink-700 font-semibold mb-6">
-            <img src="https://media.tenor.com/PL3IJgyyW0UAAAAi/bubududu-panda.gif" alt="back" class="w-12 mr-2">
-            ← Back to Movies
-        </a>
+<body class="gradient-bg min-h-screen">
+    <div class="container mx-auto px-4 py-12">
+        <div class="mb-8 animate-fade-in-up">
+            <a href="/movies" class="inline-flex items-center text-pink-500 hover:text-pink-600 font-semibold transition-colors">
+                <img src="https://media.tenor.com/PL3IJgyyW0UAAAAi/bubududu-panda.gif" alt="back" class="w-12 mr-2">
+                ← Back to Movies
+            </a>
+        </div>
 
-        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden mb-8">
+        <div class="card rounded-3xl shadow-2xl overflow-hidden mb-8 animate-fade-in-up delay-100">
             <div class="md:flex">
-                <div class="md:w-1/3">
+                <div class="md:w-1/3 overflow-hidden">
                     {% if movie.Poster and movie.Poster != 'N/A' %}
                     <img src="{{ movie.Poster }}" 
                          alt="{{ movie.Title }}"
@@ -27,51 +30,51 @@
                     {% endif %}
                 </div>
 
-                <div class="md:w-2/3 p-8">
-                    <h1 class="text-4xl font-bold text-pink-600 mb-4">{{ movie.Title }}</h1>
+                <div class="md:w-2/3 p-8 md:p-12">
+                    <h1 class="text-4xl sm:text-5xl font-bold text-pink-600 mb-4">{{ movie.Title }}</h1>
                     
-                    <div class="text-2xl mb-4">w(°o°)w</div>
+                    <div class="text-2xl mb-6">w(°o°)w</div>
                     
-                    <div class="space-y-3 mb-6">
+                    <div class="space-y-4 mb-8">
                         {% if movie.imdbRating and movie.imdbRating != 'N/A' %}
                         <div class="flex items-center text-lg">
                             <span class="text-yellow-500 text-2xl mr-2">⭐</span>
-                            <span class="font-semibold">{{ movie.imdbRating }}/10</span>
+                            <span class="font-semibold text-gray-700">{{ movie.imdbRating }}/10</span>
                         </div>
                         {% endif %}
                         
                         {% if movie.Year %}
                         <div class="flex items-center text-lg">
                             <span class="text-2xl mr-2">📅</span>
-                            <span>{{ movie.Year }}</span>
+                            <span class="text-gray-700">{{ movie.Year }}</span>
                         </div>
                         {% endif %}
                         
                         {% if movie.Runtime and movie.Runtime != 'N/A' %}
                         <div class="flex items-center text-lg">
                             <span class="text-2xl mr-2">⏰</span>
-                            <span>{{ movie.Runtime }}</span>
+                            <span class="text-gray-700">{{ movie.Runtime }}</span>
                         </div>
                         {% endif %}
                         
                         {% if movie.Genre and movie.Genre != 'N/A' %}
                         <div class="flex items-center text-lg">
                             <span class="text-2xl mr-2">🎭</span>
-                            <span>{{ movie.Genre }}</span>
+                            <span class="text-gray-700">{{ movie.Genre }}</span>
                         </div>
                         {% endif %}
 
                         {% if movie.Director and movie.Director != 'N/A' %}
                         <div class="flex items-center text-lg">
                             <span class="text-2xl mr-2">🎬</span>
-                            <span>Director: {{ movie.Director }}</span>
+                            <span class="text-gray-700">Director: {{ movie.Director }}</span>
                         </div>
                         {% endif %}
 
                         {% if movie.Actors and movie.Actors != 'N/A' %}
                         <div class="flex items-center text-lg">
                             <span class="text-2xl mr-2">🎭</span>
-                            <span>Cast: {{ movie.Actors }}</span>
+                            <span class="text-gray-700">Cast: {{ movie.Actors }}</span>
                         </div>
                         {% endif %}
                     </div>
@@ -87,9 +90,9 @@
         </div>
 
         {% if stream_url %}
-        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden mb-8">
-            <div class="p-6">
-                <h2 class="text-3xl font-bold text-pink-600 mb-4 text-center">
+        <div class="card rounded-3xl shadow-2xl overflow-hidden mb-8 animate-fade-in-up delay-200">
+            <div class="p-8">
+                <h2 class="text-3xl font-bold text-pink-600 mb-6 text-center">
                     Let's Watch Together Akiii (˶ᵔ ᵕ ᵔ˶)
                 </h2>
                 <div class="aspect-video">
@@ -105,12 +108,12 @@
         </div>
         {% endif %}
 
-        <div class="text-center">
+        <div class="text-center animate-fade-in-up delay-300">
             <img src="https://media.tenor.com/-i5DxaW3J70AAAAi/tkthao219-bubududu.gif" alt="watching together" class="inline-block w-48 rounded-lg">
-            <p class="text-pink-600 font-semibold mt-3 text-xl">Pag hindi po gumana lipat tayo website Hehe</p>
+            <p class="text-pink-600 font-semibold mt-4 text-xl">Pag hindi po gumana lipat tayo website Hehe</p>
         </div>
 
-        <div class="text-center mt-8 text-3xl">
+        <div class="text-center mt-8 text-3xl animate-fade-in-up delay-400">
             (  ≧ᗜ≦)
         </div>
     </div>

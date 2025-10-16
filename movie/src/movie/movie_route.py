@@ -58,7 +58,7 @@ def movies():
                     "Poster": movie.get("Poster")
                 })
 
-    return render_template("movies.html", movies=movies_data, search_query=search_query)
+    return render_template("movie.html", movies=movies_data, search_query=search_query)
 
 @movie_bp.route("/movie/<imdb_id>")
 def movie_detail(imdb_id):
@@ -74,7 +74,7 @@ def movie_detail(imdb_id):
 
     stream_url = f"https://vidsrc.to/embed/movie/{imdb_id}"
 
-    return render_template("movie_detail.html", movie=movie, stream_url=stream_url)
+    return render_template("movie_details.html", movie=movie, stream_url=stream_url)
 
 if __name__ == "__main__":
     pass
