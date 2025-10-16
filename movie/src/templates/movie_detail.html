@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.Title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-pink-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <a href="/movies" class="inline-flex items-center text-pink-600 hover:text-pink-700 font-semibold mb-6">
+            <img src="https://media.tenor.com/PL3IJgyyW0UAAAAi/bubududu-panda.gif" alt="back" class="w-12 mr-2">
+            ← Back to Movies
+        </a>
+
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden mb-8">
+            <div class="md:flex">
+                <div class="md:w-1/3">
+                    {% if movie.Poster and movie.Poster != 'N/A' %}
+                    <img src="{{ movie.Poster }}" 
+                         alt="{{ movie.Title }}"
+                         class="w-full h-full object-cover">
+                    {% else %}
+                    <div class="w-full h-96 bg-pink-200 flex items-center justify-center">
+                        <span class="text-9xl">🎬</span>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="md:w-2/3 p-8">
+                    <h1 class="text-4xl font-bold text-pink-600 mb-4">{{ movie.Title }}</h1>
+                    
+                    <div class="text-2xl mb-4">w(°o°)w</div>
+                    
+                    <div class="space-y-3 mb-6">
+                        {% if movie.imdbRating and movie.imdbRating != 'N/A' %}
+                        <div class="flex items-center text-lg">
+                            <span class="text-yellow-500 text-2xl mr-2">⭐</span>
+                            <span class="font-semibold">{{ movie.imdbRating }}/10</span>
+                        </div>
+                        {% endif %}
+                        
+                        {% if movie.Year %}
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-2">📅</span>
+                            <span>{{ movie.Year }}</span>
+                        </div>
+                        {% endif %}
+                        
+                        {% if movie.Runtime and movie.Runtime != 'N/A' %}
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-2">⏰</span>
+                            <span>{{ movie.Runtime }}</span>
+                        </div>
+                        {% endif %}
+                        
+                        {% if movie.Genre and movie.Genre != 'N/A' %}
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-2">🎭</span>
+                            <span>{{ movie.Genre }}</span>
+                        </div>
+                        {% endif %}
+
+                        {% if movie.Director and movie.Director != 'N/A' %}
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-2">🎬</span>
+                            <span>Director: {{ movie.Director }}</span>
+                        </div>
+                        {% endif %}
+
+                        {% if movie.Actors and movie.Actors != 'N/A' %}
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-2">🎭</span>
+                            <span>Cast: {{ movie.Actors }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    {% if movie.Plot and movie.Plot != 'N/A' %}
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-pink-600 mb-3">What's it about? ( ╹ -╹)?</h2>
+                        <p class="text-gray-700 leading-relaxed">{{ movie.Plot }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {% if stream_url %}
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden mb-8">
+            <div class="p-6">
+                <h2 class="text-3xl font-bold text-pink-600 mb-4 text-center">
+                    Let's Watch Together Akiii (˶ᵔ ᵕ ᵔ˶)
+                </h2>
+                <div class="aspect-video">
+                    <iframe 
+                        src="{{ stream_url }}" 
+                        class="w-full h-full rounded-lg"
+                        frameborder="0"
+                        allowfullscreen
+                        referrerpolicy="origin">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="text-center">
+            <img src="https://media.tenor.com/-i5DxaW3J70AAAAi/tkthao219-bubududu.gif" alt="watching together" class="inline-block w-48 rounded-lg">
+            <p class="text-pink-600 font-semibold mt-3 text-xl">Pag hindi po gumana lipat tayo website Hehe</p>
+        </div>
+
+        <div class="text-center mt-8 text-3xl">
+            (  ≧ᗜ≦)
+        </div>
+    </div>
+</body>
+</html>

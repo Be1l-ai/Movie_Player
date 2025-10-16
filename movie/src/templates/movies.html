@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-pink-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <a href="/" class="inline-block">
+                <img src="https://media.tenor.com/qlptlz2HJF0AAAAi/sseeyall-bubu-dudu.gif" 
+                     alt="back home" 
+                     class="mx-auto w-20 mb-4 hover:scale-110 transition">
+            </a>
+            <h1 class="text-4xl font-bold text-pink-600 mb-2">Pick a Movie! (っ- ‸ - ς)</h1>
+            <p class="text-gray-600">What should we watch tonight po Aki?</p>
+        </div>
+
+        <div class="max-w-2xl mx-auto mb-8">
+            <form action="/movies" method="GET" class="flex gap-2">
+                <input type="text" 
+                       name="search" 
+                       value="{{ search_query }}"
+                       placeholder="Search for movies... (˶ᵔ ᵕ ᵔ˶)" 
+                       class="flex-1 px-6 py-3 rounded-full border-2 border-pink-300 focus:border-pink-500 focus:outline-none shadow-md">
+                <button type="submit" 
+                        class="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 rounded-full font-bold shadow-md transition">
+                    Search (╭ರ_•́)
+                </button>
+            </form>
+        </div>
+
+        {% if search_query %}
+        <div class="text-center mb-4">
+            <img src="https://media.tenor.com/i2oPdqsIhpsAAAAi/bubu-dudu-sseeyall.gif" alt="searching" class="inline-block w-16">
+            <p class="text-pink-600 font-semibold">Searching for "{{ search_query }}"...(⊙ _ ⊙ )</p>
+        </div>
+        {% endif %}
+
+        {% if movies %}
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {% for movie in movies %}
+            <a href="/movie/{{ movie.imdbID }}" 
+               class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2">
+                {% if movie.Poster and movie.Poster != 'N/A' %}
+                <img src="{{ movie.Poster }}" 
+                     alt="{{ movie.Title }}"
+                     class="w-full h-80 object-cover">
+                {% else %}
+                <div class="w-full h-80 bg-pink-200 flex items-center justify-center">
+                    <span class="text-6xl">🎬</span>
+                </div>
+                {% endif %}
+                
+                <div class="p-4">
+                    <h3 class="font-bold text-gray-800 mb-2 line-clamp-2">{{ movie.Title }}</h3>
+                    <div class="text-sm text-gray-600">
+                        <span>{{ movie.Year }}</span>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-12">
+            <img src="https://media.tenor.com/GvUt5MDFQS0AAAAi/bubu-dudu-sseeyall.gif" 
+                 alt="no results" 
+                 class="mx-auto w-32 mb-4">
+            <p class="text-gray-600 text-lg">No movies found po Aki, wala ata sa database (T.T)</p>
+        </div>
+        {% endif %} 
+
+        <div class="text-center mt-12">
+            <img src="https://media1.tenor.com/m/pN7xf12qQcwAAAAC/cuddle-cute.gif" alt="hearts" class="inline-block w-32">
+        </div>
+    </div>
+</body>
+</html>
