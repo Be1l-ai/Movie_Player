@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie List</title>
+    <title>Movie Library - Browse & Search</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
@@ -11,12 +11,12 @@
     <div class="container mx-auto px-4 py-12">
         <div class="text-center mb-12 animate-fade-in-up">
             <a href="/" class="inline-block">
-                <img src="https://media.tenor.com/qlptlz2HJF0AAAAi/sseeyall-bubu-dudu.gif" 
-                     alt="back home" 
-                     class="mx-auto w-20 mb-4 hover:scale-110 transition animate-float">
+                <div class="mx-auto w-20 mb-4 hover:scale-110 transition text-5xl">
+                    🏠
+                </div>
             </a>
-            <h1 class="text-5xl sm:text-6xl font-bold text-pink-600 mb-4">Pick a Movie! (っ- ‸ - ς)</h1>
-            <p class="text-xl text-gray-700">What should we watch tonight po Aki?</p>
+            <h1 class="text-5xl sm:text-6xl font-bold text-pink-600 mb-4">Movie Library</h1>
+            <p class="text-xl text-gray-700">Explore thousands of movies</p>
         </div>
 
         <div class="max-w-2xl mx-auto mb-12 animate-fade-in-up delay-100">
@@ -24,19 +24,19 @@
                 <input type="text" 
                        name="search" 
                        value="{{ search_query }}"
-                       placeholder="Search for movies... (˶ᵔ ᵕ ᵔ˶)" 
+                       placeholder="Search for movies..." 
                        class="search-input w-full px-6 py-4 rounded-full text-lg">
                 <button type="submit" 
                         class="absolute right-2 top-1/2 transform -translate-y-1/2 button-primary text-white px-8 py-2 rounded-full font-semibold">
-                    Search (╭ರ_•́)
+                    Search
                 </button>
             </form>
         </div>
 
         {% if search_query %}
         <div class="text-center mb-8 animate-fade-in-up delay-200">
-            <img src="https://media.tenor.com/i2oPdqsIhpsAAAAi/bubu-dudu-sseeyall.gif" alt="searching" class="inline-block w-16 animate-float">
-            <p class="text-pink-600 font-semibold text-lg">Searching for "{{ search_query }}"...(⊙ _ ⊙ )</p>
+            <div class="inline-block text-4xl mb-2">🔍</div>
+            <p class="text-pink-600 font-semibold text-lg">Search results for "{{ search_query }}"</p>
         </div>
         {% endif %}
 
@@ -69,15 +69,15 @@
         </div>
         {% else %}
         <div class="text-center py-20 animate-fade-in-up delay-200">
-            <img src="https://media.tenor.com/GvUt5MDFQS0AAAAi/bubu-dudu-sseeyall.gif" 
-                 alt="no results" 
-                 class="mx-auto w-32 mb-4">
-            <p class="text-gray-700 text-xl">No movies found po Aki, wala ata sa database (T.T)</p>
+            <div class="text-6xl mb-4">
+                🎞️
+            </div>
+            <p class="text-gray-700 text-xl">No movies found. Try a different search term.</p>
         </div>
         {% endif %} 
 
         <div class="text-center mt-12 animate-fade-in-up delay-300">
-            <img src="https://media1.tenor.com/m/pN7xf12qQcwAAAAC/cuddle-cute.gif" alt="hearts" class="inline-block w-32 rounded-lg">
+            <div class="inline-block text-5xl">🍿</div>
         </div>
     </div>
 </body>

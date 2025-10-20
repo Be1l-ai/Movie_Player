@@ -63,8 +63,31 @@
     transform: translateY(0);
 }
 
-.image-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
+.button-secondary {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+}
+
+.button-secondary:active {
+    transform: translateY(0);
+}
+
+.hero-image-container {
+    box-shadow: 0 20px 60px rgba(236, 72, 153, 0.3);
+}
+
+.feature-item {
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
 }
 
 .ascii-art {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ movie.Title }}</title>
+    <title>{{ movie.Title }} - Movie Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
@@ -11,8 +11,8 @@
     <div class="container mx-auto px-4 py-12">
         <div class="mb-8 animate-fade-in-up">
             <a href="/movies" class="inline-flex items-center text-pink-500 hover:text-pink-600 font-semibold transition-colors">
-                <img src="https://media.tenor.com/PL3IJgyyW0UAAAAi/bubududu-panda.gif" alt="back" class="w-12 mr-2">
-                ← Back to Movies
+                <span class="text-2xl mr-2">←</span>
+                Back to Library
             </a>
         </div>
 
@@ -31,9 +31,7 @@
                 </div>
 
                 <div class="md:w-2/3 p-8 md:p-12">
-                    <h1 class="text-4xl sm:text-5xl font-bold text-pink-600 mb-4">{{ movie.Title }}</h1>
-                    
-                    <div class="text-2xl mb-6">w(°o°)w</div>
+                    <h1 class="text-4xl sm:text-5xl font-bold text-pink-600 mb-6">{{ movie.Title }}</h1>
                     
                     <div class="space-y-4 mb-8">
                         {% if movie.imdbRating and movie.imdbRating != 'N/A' %}
@@ -81,7 +79,7 @@
 
                     {% if movie.Plot and movie.Plot != 'N/A' %}
                     <div class="mb-6">
-                        <h2 class="text-2xl font-bold text-pink-600 mb-3">What's it about? ( ╹ -╹)?</h2>
+                        <h2 class="text-2xl font-bold text-pink-600 mb-3">Synopsis</h2>
                         <p class="text-gray-700 leading-relaxed">{{ movie.Plot }}</p>
                     </div>
                     {% endif %}
@@ -93,7 +91,7 @@
         <div class="card rounded-3xl shadow-2xl overflow-hidden mb-8 animate-fade-in-up delay-200">
             <div class="p-8">
                 <h2 class="text-3xl font-bold text-pink-600 mb-6 text-center">
-                    Let's Watch Together Akiii (˶ᵔ ᵕ ᵔ˶)
+                    Now Playing
                 </h2>
                 <div class="aspect-video">
                     <iframe 
@@ -109,12 +107,8 @@
         {% endif %}
 
         <div class="text-center animate-fade-in-up delay-300">
-            <img src="https://media.tenor.com/-i5DxaW3J70AAAAi/tkthao219-bubududu.gif" alt="watching together" class="inline-block w-48 rounded-lg">
-            <p class="text-pink-600 font-semibold mt-4 text-xl">Pag hindi po gumana lipat tayo website Hehe</p>
-        </div>
-
-        <div class="text-center mt-8 text-3xl animate-fade-in-up delay-400">
-            (  ≧ᗜ≦)
+            <div class="inline-block text-6xl mb-4">🎬</div>
+            <p class="text-gray-600 text-lg">Enjoying the movie? Explore more titles in our library!</p>
         </div>
     </div>
 </body>
