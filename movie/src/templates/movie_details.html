@@ -8,79 +8,132 @@
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body class="gradient-bg min-h-screen">
-    <div class="container mx-auto px-4 py-12">
-        <div class="mb-8 animate-fade-in-up">
-            <a href="/movies" class="inline-flex items-center text-pink-500 hover:text-pink-600 font-semibold transition-colors">
-                <span class="text-2xl mr-2">←</span>
-                Back to Library
+    <div class="container mx-auto px-4 py-8 sm:py-12">
+        <div class="mb-8 animate-fade-in-up max-w-7xl mx-auto">
+            <a href="/movies" class="inline-flex items-center gap-2 px-5 py-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <svg class="w-5 h-5 text-pink-600 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                <span class="font-semibold text-gray-700 group-hover:text-pink-600 transition-colors">Back to Library</span>
             </a>
         </div>
 
-        <div class="card rounded-3xl shadow-2xl overflow-hidden mb-8 animate-fade-in-up delay-100">
-            <div class="md:flex">
-                <div class="md:w-1/3 overflow-hidden">
+        <div class="card rounded-3xl shadow-2xl overflow-hidden mb-10 sm:mb-12 animate-fade-in-up delay-100 max-w-7xl mx-auto">
+            <div class="lg:flex">
+                <div class="lg:w-2/5 xl:w-1/3 overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
                     {% if movie.Poster and movie.Poster != 'N/A' %}
                     <img src="{{ movie.Poster }}" 
                          alt="{{ movie.Title }}"
-                         class="w-full h-full object-cover">
+                         class="w-full h-96 lg:h-full object-cover">
                     {% else %}
-                    <div class="w-full h-96 bg-pink-200 flex items-center justify-center">
-                        <span class="text-9xl">🎬</span>
+                    <div class="w-full h-96 lg:h-full bg-gradient-to-br from-pink-300 via-purple-300 to-indigo-300 flex items-center justify-center">
+                        <svg class="w-32 h-32 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                        </svg>
                     </div>
                     {% endif %}
                 </div>
 
-                <div class="md:w-2/3 p-8 md:p-12">
-                    <h1 class="text-4xl sm:text-5xl font-bold text-pink-600 mb-6">{{ movie.Title }}</h1>
+                <div class="lg:w-3/5 xl:w-2/3 p-8 sm:p-10 lg:p-12">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-8 leading-tight">{{ movie.Title }}</h1>
                     
-                    <div class="space-y-4 mb-8">
+                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
                         {% if movie.imdbRating and movie.imdbRating != 'N/A' %}
-                        <div class="flex items-center text-lg">
-                            <span class="text-yellow-500 text-2xl mr-2">⭐</span>
-                            <span class="font-semibold text-gray-700">{{ movie.imdbRating }}/10</span>
+                        <div class="flex items-center gap-3 bg-gradient-to-r from-yellow-50 to-orange-50 px-5 py-4 rounded-xl border border-yellow-200">
+                            <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium">IMDb Rating</p>
+                                <p class="font-bold text-gray-800 text-lg">{{ movie.imdbRating }}/10</p>
+                            </div>
                         </div>
                         {% endif %}
                         
                         {% if movie.Year %}
-                        <div class="flex items-center text-lg">
-                            <span class="text-2xl mr-2">📅</span>
-                            <span class="text-gray-700">{{ movie.Year }}</span>
+                        <div class="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-indigo-50 px-5 py-4 rounded-xl border border-blue-200">
+                            <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium">Release Year</p>
+                                <p class="font-bold text-gray-800 text-lg">{{ movie.Year }}</p>
+                            </div>
                         </div>
                         {% endif %}
                         
                         {% if movie.Runtime and movie.Runtime != 'N/A' %}
-                        <div class="flex items-center text-lg">
-                            <span class="text-2xl mr-2">⏰</span>
-                            <span class="text-gray-700">{{ movie.Runtime }}</span>
+                        <div class="flex items-center gap-3 bg-gradient-to-r from-purple-50 to-pink-50 px-5 py-4 rounded-xl border border-purple-200">
+                            <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium">Duration</p>
+                                <p class="font-bold text-gray-800 text-lg">{{ movie.Runtime }}</p>
+                            </div>
                         </div>
                         {% endif %}
                         
                         {% if movie.Genre and movie.Genre != 'N/A' %}
-                        <div class="flex items-center text-lg">
-                            <span class="text-2xl mr-2">🎭</span>
-                            <span class="text-gray-700">{{ movie.Genre }}</span>
+                        <div class="flex items-center gap-3 bg-gradient-to-r from-green-50 to-teal-50 px-5 py-4 rounded-xl border border-green-200">
+                            <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-green-400 to-teal-400 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                                </svg>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="text-xs text-gray-500 font-medium">Genre</p>
+                                <p class="font-bold text-gray-800 text-sm truncate">{{ movie.Genre }}</p>
+                            </div>
                         </div>
                         {% endif %}
+                    </div>
 
+                    <div class="space-y-5 mb-6">
                         {% if movie.Director and movie.Director != 'N/A' %}
-                        <div class="flex items-center text-lg">
-                            <span class="text-2xl mr-2">🎬</span>
-                            <span class="text-gray-700">Director: {{ movie.Director }}</span>
+                        <div class="flex items-start gap-3">
+                            <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-pink-100 to-purple-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-pink-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium mb-1">Director</p>
+                                <p class="text-gray-700 font-semibold">{{ movie.Director }}</p>
+                            </div>
                         </div>
                         {% endif %}
 
                         {% if movie.Actors and movie.Actors != 'N/A' %}
-                        <div class="flex items-center text-lg">
-                            <span class="text-2xl mr-2">🎭</span>
-                            <span class="text-gray-700">Cast: {{ movie.Actors }}</span>
+                        <div class="flex items-start gap-3">
+                            <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium mb-1">Cast</p>
+                                <p class="text-gray-700 font-medium">{{ movie.Actors }}</p>
+                            </div>
                         </div>
                         {% endif %}
                     </div>
 
                     {% if movie.Plot and movie.Plot != 'N/A' %}
-                    <div class="mb-6">
-                        <h2 class="text-2xl font-bold text-pink-600 mb-3">Synopsis</h2>
-                        <p class="text-gray-700 leading-relaxed">{{ movie.Plot }}</p>
+                    <div class="mt-8 p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl border border-gray-200">
+                        <h2 class="text-xl font-bold text-gray-800 mb-3 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Synopsis
+                        </h2>
+                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">{{ movie.Plot }}</p>
                     </div>
                     {% endif %}
                 </div>
@@ -88,15 +141,20 @@
         </div>
 
         {% if stream_url %}
-        <div class="card rounded-3xl shadow-2xl overflow-hidden mb-8 animate-fade-in-up delay-200">
-            <div class="p-8">
-                <h2 class="text-3xl font-bold text-pink-600 mb-6 text-center">
-                    Now Playing
-                </h2>
-                <div class="aspect-video">
+        <div class="card rounded-3xl shadow-2xl overflow-hidden mb-10 sm:mb-12 animate-fade-in-up delay-200 max-w-7xl mx-auto">
+            <div class="p-6 sm:p-8 lg:p-10">
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-500 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800">Now Playing</h2>
+                </div>
+                <div class="aspect-video rounded-xl overflow-hidden shadow-xl">
                     <iframe 
                         src="{{ stream_url }}" 
-                        class="w-full h-full rounded-lg"
+                        class="w-full h-full"
                         frameborder="0"
                         allowfullscreen
                         referrerpolicy="origin">
@@ -106,10 +164,12 @@
         </div>
         {% endif %}
 
-        <div class="text-center animate-fade-in-up delay-300">
-            <div class="inline-block text-6xl mb-4">🎬</div>
-            <p class="text-gray-600 text-lg">Enjoying the movie? Explore more titles in our library!</p>
-        </div>
+        <footer class="text-center text-gray-600 text-xs sm:text-sm animate-fade-in-up delay-300 max-w-2xl mx-auto">
+            <div class="border-t border-gray-300 pt-6 pb-4">
+                <p class="mb-2"><strong>Disclaimer:</strong> This site provides links to third-party streaming services.</p>
+                <p>We do not host, store, or distribute any video content. All content is provided by external sources.</p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

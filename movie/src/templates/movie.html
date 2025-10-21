@@ -8,59 +8,73 @@
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body class="gradient-bg min-h-screen">
-    <div class="container mx-auto px-4 py-12">
-        <div class="text-center mb-12 animate-fade-in-up">
-            <a href="/" class="inline-block">
-                <div class="mx-auto w-20 mb-4 hover:scale-110 transition text-5xl">
-                    🏠
+    <div class="container mx-auto px-4 py-8 sm:py-12">
+        <div class="text-center mb-10 sm:mb-14 animate-fade-in-up">
+            <a href="/" class="inline-block group mb-6">
+                <div class="flex items-center justify-center w-14 h-14 rounded-xl bg-white/80 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                    <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
                 </div>
             </a>
-            <h1 class="text-5xl sm:text-6xl font-bold text-pink-600 mb-4">Movie Library</h1>
-            <p class="text-xl text-gray-700">Explore thousands of movies</p>
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4 leading-tight">Movie Library</h1>
+            <p class="text-lg sm:text-xl text-gray-600 font-normal">Explore our extensive collection</p>
         </div>
 
-        <div class="max-w-2xl mx-auto mb-12 animate-fade-in-up delay-100">
+        <div class="max-w-3xl mx-auto mb-12 sm:mb-16 animate-fade-in-up delay-100">
             <form action="/movies" method="GET" class="relative">
                 <input type="text" 
                        name="search" 
                        value="{{ search_query }}"
-                       placeholder="Search for movies..." 
-                       class="search-input w-full px-6 py-4 rounded-full text-lg">
+                       placeholder="Search for movies by title..." 
+                       class="search-input w-full px-6 py-5 pr-36 rounded-2xl text-base sm:text-lg shadow-lg focus:shadow-xl">
                 <button type="submit" 
-                        class="absolute right-2 top-1/2 transform -translate-y-1/2 button-primary text-white px-8 py-2 rounded-full font-semibold">
+                        class="absolute right-2 top-1/2 transform -translate-y-1/2 button-primary text-white px-6 sm:px-8 py-3 rounded-xl font-semibold text-sm sm:text-base">
                     Search
                 </button>
             </form>
         </div>
 
         {% if search_query %}
-        <div class="text-center mb-8 animate-fade-in-up delay-200">
-            <div class="inline-block text-4xl mb-2">🔍</div>
-            <p class="text-pink-600 font-semibold text-lg">Search results for "{{ search_query }}"</p>
+        <div class="text-center mb-10 animate-fade-in-up delay-200">
+            <div class="inline-flex items-center gap-3 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
+                <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <p class="text-gray-700 font-medium text-sm sm:text-base">Results for "<span class="text-pink-600 font-semibold">{{ search_query }}</span>"</p>
+            </div>
         </div>
         {% endif %}
 
         {% if movies %}
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 animate-fade-in-up delay-200">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 animate-fade-in-up delay-200 max-w-7xl mx-auto">
             {% for movie in movies %}
-            <div class="movie-card rounded-2xl overflow-hidden shadow-lg">
-                <a href="/movie/{{ movie.imdbID }}" class="block">
+            <div class="movie-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl">
+                <a href="/movie/{{ movie.imdbID }}" class="block group">
                     {% if movie.Poster and movie.Poster != 'N/A' %}
-                    <div class="overflow-hidden">
+                    <div class="overflow-hidden relative">
                         <img src="{{ movie.Poster }}" 
                              alt="{{ movie.Title }}"
-                             class="movie-poster w-full h-80 object-cover">
+                             class="movie-poster w-full h-64 sm:h-72 lg:h-80 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     {% else %}
-                    <div class="w-full h-80 bg-pink-200 flex items-center justify-center">
-                        <span class="text-6xl">🎬</span>
+                    <div class="w-full h-64 sm:h-72 lg:h-80 bg-gradient-to-br from-pink-200 via-purple-200 to-indigo-200 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                        </svg>
                     </div>
                     {% endif %}
                     
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2 line-clamp-2">{{ movie.Title }}</h3>
-                        <div class="text-sm text-gray-600">
-                            <span>{{ movie.Year }}</span>
+                    <div class="p-4 sm:p-5 bg-white/95">
+                        <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-2 line-clamp-2 leading-snug group-hover:text-pink-600 transition-colors">{{ movie.Title }}</h3>
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1 text-xs sm:text-sm text-gray-600 font-medium px-2 py-1 bg-gray-100 rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                {{ movie.Year }}
+                            </span>
                         </div>
                     </div>
                 </a>
@@ -68,17 +82,23 @@
             {% endfor %}
         </div>
         {% else %}
-        <div class="text-center py-20 animate-fade-in-up delay-200">
-            <div class="text-6xl mb-4">
-                🎞️
+        <div class="text-center py-20 sm:py-32 animate-fade-in-up delay-200">
+            <div class="max-w-md mx-auto card rounded-3xl shadow-xl p-10 sm:p-12">
+                <svg class="w-20 h-20 mx-auto mb-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"></path>
+                </svg>
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">No Movies Found</h3>
+                <p class="text-gray-600 text-base leading-relaxed">Try adjusting your search terms or browse our complete library</p>
             </div>
-            <p class="text-gray-700 text-xl">No movies found. Try a different search term.</p>
         </div>
         {% endif %} 
 
-        <div class="text-center mt-12 animate-fade-in-up delay-300">
-            <div class="inline-block text-5xl">🍿</div>
-        </div>
+        <footer class="text-center text-gray-600 text-xs sm:text-sm animate-fade-in-up delay-300 mt-16 sm:mt-20">
+            <div class="border-t border-gray-300 pt-6 pb-4">
+                <p class="mb-2"><strong>Disclaimer:</strong> This site provides links to third-party streaming services.</p>
+                <p>We do not host, store, or distribute any video content. All content is provided by external sources.</p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
