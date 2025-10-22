@@ -9,6 +9,7 @@ OMDB_API_KEY = os.getenv("OMDB_API_KEY")
 url = "http://www.omdbapi.com/"
 
 from . import movie_bp
+from .utils import get_popular_titles
 
 @movie_bp.route("/movies")
 def movies():
@@ -26,18 +27,9 @@ def movies():
         data = response.json()
         movies_data = data.get("Search", [])
     else:
-        popular_titles = [
-            "The Shawshank Redemption",
-            "The Dark Knight",
-            "Inception",
-            "Interstellar",
-            "The Matrix",
-            "Forrest Gump",
-            "Pulp Fiction",
-            "The Lord of the Rings",
-            "Spirited Away",
-            "Your Name"
-        ]
+        keywords = ["love", "adventure", "comedy", "action", "drama", "thriller", "fantasy", "horror", "romance", "sci-fi", "animation", "mystery", "crime", "war", "western", "musical", "biography", "documentary"]
+
+        popular_titles = get_popular_titles(keywords)
         
         movies_data = []
         for title in popular_titles:
