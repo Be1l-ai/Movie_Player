@@ -67,13 +67,14 @@ FLASK_ENV=development          # if real development or production
 ## Screenshots
 
 ### Home Page - Search
-![Search](screenshots/search.png)
+![Search](screenshots/home.jpg)
+![Search](screenshots/search.jpg)
 
 ### Movie Details
-![Details](screenshots/details.png)
+![Details](screenshots/details.jpg)
 
-### Video Player
-![Player](screenshots/player.png)
+### Movie List
+![Player](screenshots/list.jpg)
 
 ## What I Learned
 
