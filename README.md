@@ -2,7 +2,7 @@
 
 A web-based movie streaming application that lets you search for movies and watch them directly in your browser. Built with Flask, integrating OMDB API for movie metadata and streaming APIs for video playback.
 
-🔗 **Live Demo:** [movieforcutie.onrender.com](https://movie-player-z7yj.onrender.com/)]
+🔗 **Live Demo:** [movie-player-z7yj.onrender.com](https://movie-player-z7yj.onrender.com/)]
 
 ## Features
 
